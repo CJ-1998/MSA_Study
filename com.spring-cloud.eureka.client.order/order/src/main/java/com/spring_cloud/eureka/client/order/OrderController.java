@@ -2,6 +2,7 @@ package com.spring_cloud.eureka.client.order;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -10,15 +11,15 @@ public class OrderController {
 
     private final OrderService orderService;
 
-//    // 서킷 브레이커 학습 위한 메서드
-//   @GetMapping("/order/{orderId}")
-//    public String getOrder(@PathVariable String orderId) {
-//        return orderService.getOrder(orderId);
-//    }
-
-    // api gateway 학습 위한 메서드
-    @GetMapping("/order")
-    public String getOrder() {
-        return "Order detail";
+    // 서킷 브레이커 학습 위한 메서드
+    @GetMapping("/order/{orderId}")
+    public String getOrder(@PathVariable String orderId) {
+        return orderService.getOrder(orderId);
     }
+
+//    // api gateway 학습 위한 메서드
+//    @GetMapping("/order")
+//    public String getOrder() {
+//        return "Order detail";
+//    }
 }
